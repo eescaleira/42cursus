@@ -6,23 +6,31 @@
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 00:10:20 by eescalei          #+#    #+#              #
-#    Updated: 2023/05/12 23:30:28 by eescalei         ###   ########.fr        #
+#    Updated: 2023/05/20 18:20:35 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-FUN = 
-OBJS = {FUN:.c=.o}
-HEADER = libftprinf.h
-INCLUDE = -I include
-CC = cc
-RM = rm -f
-FLAGS = -Wall -Wextra -Werror
 
-.c.o: ${CC} ${FLAGS} ${include} -c $< -o ${<:.c=.o}
-${NAME}: ${OBJS} ar rcs ${NAME} ${OBJS} ${HEADER}
-all: ${NAME}
-clean: ${RM} ${OBJS}
-fclean: clean ${RM} ${NAME}
-re: fclean all
-.PHONY: all clean fclean re bonus
+SRCS =  ft_printf.c \
+		printstuf.c
+
+FLAGS = -c -Wall -Wextra -Werror
+
+OBJS = $(SRCS:.c=.o)
+
+$(NAME): $(OBJS)
+	gcc $(FLAGS) $(SRCS)
+	ar -rcs $(NAME) $(OBJS)
+
+all : $(NAME)
+
+clean :
+	rm -rf $(OBJS)
+
+fclean : clean
+	rm -rf $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re
