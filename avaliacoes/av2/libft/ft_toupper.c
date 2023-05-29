@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: migupere <migupere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 10:22:57 by eescalei          #+#    #+#             */
-/*   Updated: 2023/05/29 18:40:50 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/18 15:16:33 by migupere          #+#    #+#             */
+/*   Updated: 2023/05/04 16:56:36 by migupere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
-#include <stdio.h>
-#include <fcntl.h>
+#include "libft.h"
 
-char *get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen(const char *s);
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
+}
 
-#endif
+/*int	main(void)
+{
+	printf ("\n----- func: ft_toupper -----\n");
+	int a3 = 'm';
+	printf("%i", ft_toupper (a3));
+}*/

@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: migupere <migupere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 10:22:57 by eescalei          #+#    #+#             */
-/*   Updated: 2023/05/29 18:40:50 by eescalei         ###   ########.fr       */
+/*   Created: 2023/04/13 17:42:43 by migupere          #+#    #+#             */
+/*   Updated: 2023/05/04 16:52:44 by migupere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
-#include <stdio.h>
-#include <fcntl.h>
+#include "libft.h"
 
-char *get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen(const char *s);
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+	{
+		return (1);
+	}
+	return (0);
+}
 
-#endif
+/*int	main(void)
+{
+	printf ("\n----- func: ft_isascii -----\n");
+	printf ("%i\n", ft_isascii ('?'));
+	printf ("%i\n", ft_isascii (130));
+}*/

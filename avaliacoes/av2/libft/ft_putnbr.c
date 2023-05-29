@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: migupere <migupere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 10:22:57 by eescalei          #+#    #+#             */
-/*   Updated: 2023/05/29 18:40:50 by eescalei         ###   ########.fr       */
+/*   Created: 2023/05/16 16:32:21 by migupere          #+#    #+#             */
+/*   Updated: 2023/05/17 16:06:33 by migupere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
-#include <stdio.h>
-#include <fcntl.h>
+#include "libft.h"
 
-char *get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen(const char *s);
+void	ft_putnbr(int n)
+{
+	long int	m;
 
-#endif
+	m = n;
+	if (m < 0)
+	{
+		ft_putchar('-');
+		m *= -1;
+	}
+	if (m > 9)
+		ft_putnbr(m / 10);
+	ft_putchar(m % 10 + '0');
+}
