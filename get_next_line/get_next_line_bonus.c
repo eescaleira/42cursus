@@ -86,7 +86,7 @@ char *get_next_line(int fd)
 	char		*buffer;
 	char		*line;
 	int			linec;
-	static char *static_buf;
+	static char *static_buf[10000000];
 	
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
@@ -94,18 +94,18 @@ char *get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	linec = 0;
-	while (find_endl(static_buf) == -1)
+	while (find_endl(static_buf[fd]) == -1)
 	{
 		linec = read(fd, buffer, BUFFER_SIZE);
 		if (linec <= 0)
 			break ;
 		buffer[linec] = '\0';
-		static_buf = ft_strjoin(static_buf, buffer);
+		static_buf[fd] = ft_strjoin(static_buf[fd], buffer);
 	}
 	free (buffer);
 	if (linec == -1)
 		return (NULL);
-	line = calc_line(static_buf);
-	static_buf = calc_buf(static_buf);
+	line = calc_line(static_buf[fd]);
+	static_buf[fd] = calc_buf(static_b[fd]);
 	return (line);
 }
