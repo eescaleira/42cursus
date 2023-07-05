@@ -22,13 +22,13 @@ int main (int argc, char **argv, char **envp)
 	if(pipe(pipex.tube) < 0)
 		return 0;
 	pipex.paths = find_path_env(envp);
-	pipex.cmd_paths = ft_split(pipex.paths, ":");
+	pipex.cmd_paths = ft_split(pipex.paths, ':');
 	pipex.pid1 = fork();
 	if (pipex.pid1 == 0)
-		child1(pipex, *argv, envp);
+		child1(pipex, argv, envp);
 	pipex.pid2 = fork();
 	if (pipex.pid2 == 0)
-		child2(pipex, *argv, envp);
+		child2(pipex, argv, envp);
 	close_pipes(&pipex);
 	waitpid(pipex.pid1, NULL, 0);
 	waitpid(pipex.pid2, NULL, 0);

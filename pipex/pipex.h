@@ -8,7 +8,7 @@
 # include <sys/wait.h>
 # include <errno.h>
 # include <string.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct s_pipex
 {
@@ -24,8 +24,8 @@ typedef struct s_pipex
 }t_pipex;
 
 int main(int argc, char **argv, char **envp);
-void child1(t_pipex pipex, char *argv, char **envp);
-void child2(t_pipex pipex, char *argv, char **envp);
+void child1(t_pipex pipex, char **argv, char **envp);
+void child2(t_pipex pipex, char **argv, char **envp);
 void close_pipes(t_pipex *pipex);
 void free_child(t_pipex *pipex);
 void free_parent(t_pipex *pipex);
