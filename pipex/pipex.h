@@ -8,6 +8,7 @@
 # include <sys/wait.h>
 # include <errno.h>
 # include <string.h>
+# include "../libft/libft.h"
 
 typedef struct s_pipex
 {
