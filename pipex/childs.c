@@ -1,7 +1,7 @@
 
 #include "pipex.h"
 
-char *get_cmd(char **paths, char *cmd)
+char *get_cmd(char *paths, char *cmd)
 {
 	char *temp;
 	char *command;
@@ -10,15 +10,15 @@ char *get_cmd(char **paths, char *cmd)
 	{
 		temp = ft_strjoin(*paths, "/");
 		command = ft_strjoin(temp, cmd);
-		if(acess(command, 0) == 0)
+		if(access(command, 0) == 0)
 			return(command);
 		free(command);
 		paths++;
 	}
-	retun(NULL);
+	return(NULL);
 }
 
-void child1(t_pipex pipex, char *argv, char *envp)
+void child1(t_pipex pipex, char *argv, char **envp)
 {
 	dup2(pipex.tube[1], 1);
 	close(pipex.tube[0]);
@@ -27,13 +27,13 @@ void child1(t_pipex pipex, char *argv, char *envp)
 	pipex.cmd = get_cmd(pipex.paths, pipex.cmd_args[0]);
 	if(!pipex.cmd)
 	{
-		free_child(pipex);
+		free_child(&pipex);
 		exit (1);
 	}
-	execve(pipex.cmd, pipex.cmd_args,envp);
+	execve(pipex.cmd, pipex.cmd_args, envp);
 }
 
-void child2(t_pipex pipex, char *argv, char *envp)
+void child2(t_pipex pipex, char *argv, char **envp)
 {
 	dup2(pipex.tube[0], 0);
 	close(pipex.tube[1]);
@@ -42,7 +42,7 @@ void child2(t_pipex pipex, char *argv, char *envp)
 	pipex.cmd = get_cmd(pipex.paths, pipex.cmd_args[0]);
 	if(!pipex.cmd)
 	{
-		free_child(pipex);
+		free_child(&pipex);
 		exit (1);
 	}
 	execve(pipex.cmd, pipex.cmd_args, envp);
