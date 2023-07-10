@@ -1,5 +1,5 @@
 
-# include "pipex.h"
+#include "pipex.h"
 
 char *find_path_env(char **envp)
 {
@@ -8,7 +8,7 @@ char *find_path_env(char **envp)
 	return (*envp + 5);
 }
 
-int main (int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
 	t_pipex pipex;
 	if (argc != 5)
